@@ -90,8 +90,15 @@ h1,h2,h3,.statement,.quote-block h2,.featured-article h2,.portrait-card blockquo
 .hero-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.9) contrast(1.03)}
 .hero-photo-card:after,.about-photo-card:after{content:"";position:absolute;inset:28% 0 0;background:linear-gradient(180deg,transparent 0%,rgba(7,20,38,.04) 35%,rgba(7,20,38,.72) 100%);pointer-events:none}
 .hero-photo-card figcaption,.about-photo-card figcaption{position:absolute;right:1.1rem;bottom:1rem;left:1.1rem;z-index:1;color:#fff;font-family:ui-monospace,"Cascadia Code","SFMono-Regular",Consolas,monospace;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.35)}
-.hero-visual .strategy-panel{position:absolute;left:0;bottom:2rem;width:min(86%,380px);z-index:2;transform:rotate(-2deg)}
 .about-photo-card{position:relative;margin:0 0 1.25rem;border:1px solid rgba(99,217,255,.28);border-radius:20px;overflow:hidden;background:#d8e3f0;box-shadow:0 18px 42px rgba(0,0,0,.2)}
 .about-photo{display:block;width:100%;height:235px;object-fit:cover;object-position:center 34%}
-@media(max-width:820px){.hero-visual{min-height:0;display:block}.hero-photo-card{width:100%;height:520px;transform:none}.hero-visual .strategy-panel{position:relative;left:auto;bottom:auto;width:100%;margin-top:-3rem;transform:none}}
+.strategy-panel-compact{position:relative;width:100%;transform:none;margin:0 0 1.25rem;padding:1rem;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(99,217,255,.26);box-shadow:none}
+.strategy-panel-compact .panel-top{font-size:.58rem}
+.strategy-panel-compact .panel-copy{padding:1.35rem .25rem 1rem}
+.strategy-panel-compact .panel-copy strong{font-size:clamp(1.25rem,2vw,1.7rem);letter-spacing:-.03em}
+.strategy-panel-compact .signal-grid{gap:.4rem}
+.strategy-panel-compact .signal-grid div{padding:.75rem;border-radius:12px;background:rgba(7,20,38,.3);border-color:rgba(99,217,255,.16)}
+.strategy-panel-compact .signal-grid small{font-size:.75rem}
+.strategy-panel-compact .panel-note{padding:.75rem;margin-top:.45rem;border-radius:13px}
+@media(max-width:820px){.hero-visual{min-height:0;display:block}.hero-photo-card{width:100%;height:520px;transform:none}}
 @media(max-width:560px){.hero-photo-card{height:460px}.about-photo{height:205px}}
