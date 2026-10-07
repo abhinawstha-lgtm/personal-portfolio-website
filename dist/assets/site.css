@@ -81,3 +81,5 @@ body{font-family:var(--body-font);letter-spacing:.006em}
 h1,h2,h3,.statement,.quote-block h2,.featured-article h2,.portrait-card blockquote,.cta-band h2,.page-hero h1,.article-header h1{font-family:var(--display-font);font-weight:700;letter-spacing:-.045em}
 .hero h1,.page-hero h1,.article-header h1{letter-spacing:-.055em}
 .eyebrow,.kicker,.value-card .num,.service-card .num,.article-card .category,.step-num,.panel-top,.article-meta,.tag{font-family:ui-monospace,"Cascadia Code","SFMono-Regular",Consolas,monospace;letter-spacing:.12em}
+.hero h1 strong{font-weight:800}
+.hero h1 em{font-style:italic}
