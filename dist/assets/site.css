@@ -74,3 +74,10 @@ body:before{background:repeating-linear-gradient(180deg,transparent 0,transparen
 .portrait-logo-panel{display:inline-flex;align-items:center;background:#fff;border:1px solid rgba(99,217,255,.28);border-radius:15px;padding:.55rem .75rem;box-shadow:0 14px 36px rgba(0,0,0,.22)}
 .portrait-logo{display:block;width:min(100%,255px);height:auto}
 @media(max-width:560px){.brand-logo-header{height:46px;max-width:158px}.brand-logo-footer{height:50px;max-width:190px}.portrait-logo{width:min(100%,220px)}}
+
+/* Logo-inspired typography: expressive serif headlines with a crisp technical sans body. */
+:root{--display-font:Georgia,"Times New Roman",serif;--body-font:"Segoe UI",Inter,Arial,sans-serif}
+body{font-family:var(--body-font);letter-spacing:.006em}
+h1,h2,h3,.statement,.quote-block h2,.featured-article h2,.portrait-card blockquote,.cta-band h2,.page-hero h1,.article-header h1{font-family:var(--display-font);font-weight:700;letter-spacing:-.045em}
+.hero h1,.page-hero h1,.article-header h1{letter-spacing:-.055em}
+.eyebrow,.kicker,.value-card .num,.service-card .num,.article-card .category,.step-num,.panel-top,.article-meta,.tag{font-family:ui-monospace,"Cascadia Code","SFMono-Regular",Consolas,monospace;letter-spacing:.12em}
