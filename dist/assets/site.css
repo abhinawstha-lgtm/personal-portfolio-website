@@ -136,3 +136,6 @@ h1,h2,h3,.statement,.quote-block h2,.featured-article h2,.portrait-card blockquo
 .eyebrow:before,.service-card li:before,.feature-list li:before{background:#0b2e59;box-shadow:0 0 8px rgba(11,46,89,.2)}
 .value-card:before,.service-card:before,.article-card:before{background:linear-gradient(90deg,transparent,#0b2e59,transparent)}
 .section-dark .kicker{color:#63d9ff}
+
+/* Highlighted homepage slogan */
+.hero h1 em{color:#fff;background:#0b2e59;padding:.04em .16em .09em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-shadow:none}
