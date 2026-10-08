@@ -86,7 +86,7 @@ h1,h2,h3,.statement,.quote-block h2,.featured-article h2,.portrait-card blockquo
 
 /* Supplied photography */
 .hero-visual{position:relative;min-height:620px;display:flex;align-items:flex-end;justify-content:flex-end}
-.hero-photo-card{position:relative;width:min(100%,430px);height:620px;margin:0;border:1px solid #cbd8e8;border-radius:30px;overflow:hidden;background:#d8e3f0;box-shadow:0 28px 70px rgba(15,40,75,.2);transform:translateY(-24px) rotate(1.2deg)}
+.hero-photo-card{position:relative;width:min(100%,430px);height:620px;margin:0;border:1px solid #cbd8e8;border-radius:30px;overflow:hidden;background:#d8e3f0;box-shadow:0 28px 70px rgba(15,40,75,.2);transform:translateY(-44px) rotate(1.2deg)}
 .hero-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.9) contrast(1.03)}
 .hero-photo-card:after,.about-photo-card:after{content:"";position:absolute;inset:28% 0 0;background:linear-gradient(180deg,transparent 0%,rgba(7,20,38,.04) 35%,rgba(7,20,38,.72) 100%);pointer-events:none}
 .hero-photo-card figcaption,.about-photo-card figcaption{position:absolute;right:1.1rem;bottom:1rem;left:1.1rem;z-index:1;color:#fff;font-family:ui-monospace,"Cascadia Code","SFMono-Regular",Consolas,monospace;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.35)}
@@ -100,12 +100,12 @@ h1,h2,h3,.statement,.quote-block h2,.featured-article h2,.portrait-card blockquo
 .strategy-panel-compact .signal-grid div{padding:.75rem;border-radius:12px;background:rgba(7,20,38,.3);border-color:rgba(99,217,255,.16)}
 .strategy-panel-compact .signal-grid small{font-size:.75rem}
 .strategy-panel-compact .panel-note{padding:.75rem;margin-top:.45rem;border-radius:13px}
-@media(max-width:820px){.hero-visual{min-height:0;display:block}.hero-photo-card{width:100%;height:520px;transform:translateY(-18px)}}
+@media(max-width:820px){.hero-visual{min-height:0;display:block}.hero-photo-card{width:100%;height:520px;transform:translateY(-30px)}}
 @media(max-width:560px){.hero-photo-card{height:460px}.about-photo{height:205px}}
 
 /* Friendly motion layer: light, tactile, and easy to turn off with reduced motion. */
-@keyframes heroFloat{0%,100%{transform:translateY(-24px) rotate(1.2deg)}50%{transform:translateY(-34px) rotate(.2deg)}}
-@keyframes heroFloatMobile{0%,100%{transform:translateY(-18px)}50%{transform:translateY(-26px)}}
+@keyframes heroFloat{0%,100%{transform:translateY(-44px) rotate(1.2deg)}50%{transform:translateY(-56px) rotate(.2deg)}}
+@keyframes heroFloatMobile{0%,100%{transform:translateY(-30px)}50%{transform:translateY(-40px)}}
 @keyframes glowPulse{0%,100%{box-shadow:0 0 0 rgba(23,105,255,0)}50%{box-shadow:0 0 28px rgba(23,105,255,.25)}}
 @keyframes buttonShimmer{0%{transform:translateX(-130%)}55%,100%{transform:translateX(130%)}}
 .hero-visual:before{content:"";position:absolute;width:260px;height:260px;right:8%;top:8%;border-radius:50%;background:radial-gradient(circle,rgba(99,217,255,.2),rgba(99,217,255,0) 68%);filter:blur(4px);pointer-events:none;animation:glowPulse 6s ease-in-out infinite}
@@ -128,3 +128,11 @@ h1,h2,h3,.statement,.quote-block h2,.featured-article h2,.portrait-card blockquo
 .button:after{content:"";position:absolute;inset:0 auto 0 -35%;width:24%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.34),transparent);transform:skewX(-18deg);animation:buttonShimmer 5s ease-in-out infinite;pointer-events:none}
 @media(max-width:820px){.hero-photo-card{animation:heroFloatMobile 7s ease-in-out infinite}.hero-visual:before{right:0;top:4%;width:190px;height:190px}.value-card:hover,.service-card:hover,.article-card:hover,.pain-item:hover,.ai-board:hover,.quote-block:hover,.portrait-card:hover{transform:translateY(-3px)}}
 @media(prefers-reduced-motion:reduce){.hero-photo-card,.hero-visual:before,.strategy-panel-compact .panel-note,.button:after{animation:none!important}.about-photo-card .about-photo,.about-photo-card,.value-card,.service-card,.article-card,.pain-item,.ai-board,.quote-block,.portrait-card{transition:none!important}.desktop-nav a:after{transition:none!important}}
+
+/* Dark navy typography accents */
+:root{--blue:#0b2e59;--blue-2:#164270}
+.desktop-nav a:hover,.desktop-nav a[aria-current=page],.text-link:hover,.eyebrow,.kicker,.hero h1 em,.value-card .num,.service-card .num,.article-card .category,.service-card .text-link,.article-card .text-link,.ai-icon,.belief span,.approach-row:before,.service-visual .service-glyph,.detail-block h3,.faq-item button:after{color:#0b2e59}
+.desktop-nav a:after{background:#0b2e59}
+.eyebrow:before,.service-card li:before,.feature-list li:before{background:#0b2e59;box-shadow:0 0 8px rgba(11,46,89,.2)}
+.value-card:before,.service-card:before,.article-card:before{background:linear-gradient(90deg,transparent,#0b2e59,transparent)}
+.section-dark .kicker{color:#63d9ff}
