@@ -18,36 +18,17 @@
     if(new URLSearchParams(location.search).get('sent')==='1'){
       status.className='form-status is-success';
       status.innerHTML='<strong>Thank you.</strong> Your consultation request has been sent to Abhinav. I’ll be in touch soon.';
+      history.replaceState({},'',location.pathname);
     }
-    form.addEventListener('submit',async e=>{
-      e.preventDefault();
-      if(!form.reportValidity())return;
-      submit.disabled=true;
-      submit.textContent='Sending your request…';
-      status.className='form-status is-loading';
-      status.textContent='Sending your consultation request securely…';
-      if(!config.FORM_ENDPOINT){status.className='form-status is-error';status.innerHTML='<strong>That didn’t send.</strong> Please email abhinawstha@gmail.com instead.';submit.disabled=false;submit.textContent='Request My Free Consultation';return}
-      try{
-        const body=Object.fromEntries(new FormData(form).entries());
-        const res=await fetch(config.FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)});
-        const data=await res.json().catch(()=>({}));
-        const activationRequired=(data.success===false||data.success==='false')&&/activat/i.test(String(data.message||''));
-        if(activationRequired){
-          status.className='form-status is-notice';
-          status.innerHTML='<strong>One final setup step is required.</strong> FormSubmit has emailed the website owner an activation link. Please try again after the form is activated.';
-          return;
-        }
-        if(!res.ok||data.success===false||data.success==='false')throw new Error(data.message||'Unable to submit');
-        form.reset();
-        status.className='form-status is-success';
-        status.innerHTML='<strong>Thank you.</strong> Your consultation request has been sent to Abhinav. I’ll be in touch soon.';
-      }catch{
-        status.className='form-status is-error';
-        status.innerHTML='<strong>That didn’t send.</strong> Please try again, or email <a href="mailto:abhinawstha@gmail.com">abhinawstha@gmail.com</a>.';
-      }finally{
-        submit.disabled=false;
-        submit.textContent='Request My Free Consultation';
+    form.addEventListener('submit',e=>{
+      if(!form.reportValidity()){
+        e.preventDefault();
+        return;
       }
+      submit.disabled=true;
+      submit.textContent='Opening secure verification…';
+      status.className='form-status is-loading';
+      status.textContent='FormSubmit is verifying your request before delivery…';
     })
   }
   document.querySelectorAll('.section-head').forEach(el=>el.classList.add('reveal','motion-left'));
