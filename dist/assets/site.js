@@ -15,31 +15,20 @@
   const form=document.querySelector('#contact-form');
   if(form){
     const status=document.querySelector('#form-status'),submit=form.querySelector('button[type=submit]');
-    form.addEventListener('submit',async e=>{
-      e.preventDefault();
+    if(new URLSearchParams(location.search).get('sent')==='1'){
+      status.className='form-status is-success';
+      status.innerHTML='<strong>Thank you.</strong> Your consultation request has been submitted to Abhinav.';
+      history.replaceState({},'',location.pathname);
+    }
+    form.addEventListener('submit',e=>{
       if(!form.reportValidity()){
+        e.preventDefault();
         return;
       }
       submit.disabled=true;
-      submit.textContent='Sending your request…';
+      submit.textContent='Sending securely…';
       status.className='form-status is-loading';
-      status.textContent='Sending securely…';
-      const payload=Object.fromEntries(new FormData(form).entries());
-      payload.submissionId=globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      try{
-        const response=await fetch(config.CONTACT_ENDPOINT||form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-        const result=await response.json().catch(()=>({}));
-        if(!response.ok||result.success!==true||!result.id) throw new Error(result.error||'The request could not be delivered.');
-        form.reset();
-        status.className='form-status is-success';
-        status.innerHTML='<strong>Thank you.</strong> Your consultation request has been delivered to Abhinav. I’ll be in touch soon.';
-        submit.textContent='Request sent';
-      }catch(error){
-        status.className='form-status is-error';
-        status.innerHTML=`<strong>That didn’t send.</strong> ${error.message||'Please try again.'} You can also email <a href="mailto:abhinawstha@gmail.com">abhinawstha@gmail.com</a>.`;
-        submit.disabled=false;
-        submit.textContent='Request My Free Consultation';
-      }
+      status.textContent='Submitting your request through FormSubmit…';
     })
   }
   document.querySelectorAll('.section-head').forEach(el=>el.classList.add('reveal','motion-left'));
@@ -48,5 +37,10 @@
   document.querySelectorAll('.cta-band').forEach(el=>el.classList.add('reveal','motion-scale'));
   const observer=new IntersectionObserver(items=>items.forEach(i=>{if(i.isIntersecting){i.target.classList.add('in');observer.unobserve(i.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   const progress=document.createElement('div');progress.className='scroll-progress';progress.setAttribute('aria-hidden','true');document.body.appendChild(progress);
-  let progressTick=false;const updateProgress=()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.setProperty('--scroll-progress',String(max>0?Math.min(1,scrollY/max):0));progressTick=false};addEventListener('scroll',()=>{if(!progressTick){progressTick=true;requestAnimationFrame(updateProgress)}},{passive:true});addEventListener('resize',updateProgress);updateProgress();
+  const premiumHero=document.querySelector('.hero-premium');
+  document.querySelectorAll('.service-card,.value-card,.article-card').forEach(card=>{
+    card.addEventListener('pointermove',event=>{const box=card.getBoundingClientRect();card.style.setProperty('--spot-x',`${event.clientX-box.left}px`);card.style.setProperty('--spot-y',`${event.clientY-box.top}px`);card.classList.add('has-spotlight')});
+    card.addEventListener('pointerleave',()=>card.classList.remove('has-spotlight'));
+  });
+  let progressTick=false;const updateProgress=()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.setProperty('--scroll-progress',String(max>0?Math.min(1,scrollY/max):0));if(premiumHero)premiumHero.style.setProperty('--hero-scroll',`${Math.min(34,scrollY*.055)}px`);progressTick=false};addEventListener('scroll',()=>{if(!progressTick){progressTick=true;requestAnimationFrame(updateProgress)}},{passive:true});addEventListener('resize',updateProgress);updateProgress();
 })();
