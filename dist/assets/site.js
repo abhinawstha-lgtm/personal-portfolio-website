@@ -15,6 +15,10 @@
   const form=document.querySelector('#contact-form');
   if(form){
     const status=document.querySelector('#form-status'),submit=form.querySelector('button[type=submit]');
+    if(new URLSearchParams(location.search).get('sent')==='1'){
+      status.className='form-status is-success';
+      status.innerHTML='<strong>Thank you.</strong> Your consultation request has been sent to Abhinav. I’ll be in touch soon.';
+    }
     form.addEventListener('submit',async e=>{
       e.preventDefault();
       if(!form.reportValidity())return;
@@ -27,6 +31,12 @@
         const body=Object.fromEntries(new FormData(form).entries());
         const res=await fetch(config.FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(body)});
         const data=await res.json().catch(()=>({}));
+        const activationRequired=(data.success===false||data.success==='false')&&/activat/i.test(String(data.message||''));
+        if(activationRequired){
+          status.className='form-status is-notice';
+          status.innerHTML='<strong>One final setup step is required.</strong> FormSubmit has emailed the website owner an activation link. Please try again after the form is activated.';
+          return;
+        }
         if(!res.ok||data.success===false||data.success==='false')throw new Error(data.message||'Unable to submit');
         form.reset();
         status.className='form-status is-success';
