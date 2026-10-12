@@ -11,6 +11,7 @@ const requiredFiles = [
   "dist/assets/abhinav-shrestha-logo.png",
   "dist/assets/hero-section.jpg",
   "dist/assets/ai-marketing-consultant.png",
+  "api/contact.js",
 ];
 
 const missingFiles = requiredFiles.filter((file) => !existsSync(file));
