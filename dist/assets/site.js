@@ -17,7 +17,7 @@
     const status=document.querySelector('#form-status'),submit=form.querySelector('button[type=submit]');
     if(new URLSearchParams(location.search).get('sent')==='1'){
       status.className='form-status is-success';
-      status.innerHTML='<strong>Thank you.</strong> Your consultation request has been submitted to Abhinav.';
+      status.innerHTML='<strong>Thank you.</strong> FormSubmit accepted your consultation request for delivery to Abhinav.';
       history.replaceState({},'',location.pathname);
     }
     form.addEventListener('submit',e=>{
