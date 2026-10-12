@@ -182,3 +182,9 @@ body{overflow-x:hidden}
 .footer{position:relative}.footer:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#1769ff,#63d9ff,transparent)}
 @media(max-width:560px){.section:not(.section-dark):before{width:calc(100% - 28px)}.kicker,.page-hero .kicker{font-size:.69rem}.cta-band:after{width:210px;height:210px;right:-100px;bottom:-120px}}
 @media(prefers-reduced-motion:reduce){.value-card:after,.service-card:after,.article-card:after,.white-card:after,.pain-item:after,.ai-row{transition:none!important}}
+
+/* Functional contact form details. */
+.form-honey{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important}
+.contact-email{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(99,217,255,.2)}
+.contact-email a,.form-status a{color:inherit;font-weight:750;text-underline-offset:3px}
+.contact-email a{color:#8be2ff}
